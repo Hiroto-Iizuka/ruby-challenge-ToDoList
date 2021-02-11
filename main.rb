@@ -38,16 +38,14 @@ class ToDo
   end
 
   # 詰まっている箇所
-  def delete(task: )
-    task = task[i].info
-    puts task.info
-    #if task == @tasks.find([@id])
-    #puts "【削除】#{task.info}"
-    #  @tasks.delete(@id)
-    #else
-     # puts "【！】該当idのタスクはありません。"
-    #end
-    
+  def delete(id:)
+    task = @tasks.find{｜task｜ task.id == id }
+    if task.empty?
+      puts "【！】該当idのタスクはありません。"
+    else
+      @tasks.delete(task)
+      puts "【削除】#{task.info}"
+    end
   end
 end
 
