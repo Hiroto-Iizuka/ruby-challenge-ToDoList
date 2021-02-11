@@ -1,14 +1,10 @@
 class Task
   attr_reader :id, :title, :content
 
-  def id
-    @@count += 1
-  end
-
   @@count = 0
 
   def initialize(title:, content:)
-    @id = id
+    @id = @@count += 1
     @title = title
     @content = content
   end
@@ -16,6 +12,7 @@ class Task
   def info
     "[No.#{@id}] #{@title}:#{@content}"
   end
+
 end
 
 class ToDo
@@ -28,13 +25,28 @@ class ToDo
     @tasks.push(task)
   end
   
-  #詰まっている箇所
   def info
-    puts <<~EOS
-    *=*=*=*=*=*=*=*=* task *=*=*=*=*=*=*=*=*
-    #{@tasks[1][id]}
-    *=*=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*
-    EOS
+    if @tasks == []
+      puts "【！】タスクはありません。"
+    else
+      puts "*=*=*=*=*=*=*=*=* task *=*=*=*=*=*=*=*=*"
+      @tasks.each do |task|
+      puts "#{task.info}"
+      end
+      puts "*=*=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*"
+    end
+  end
+
+  # 詰まっている箇所
+  def delete(task: )
+    task = task[i].info
+    puts task.info
+    #if task == @tasks.find([@id])
+    #puts "【削除】#{task.info}"
+    #  @tasks.delete(@id)
+    #else
+     # puts "【！】該当idのタスクはありません。"
+    #end
     
   end
 end
@@ -47,4 +59,9 @@ task3 = Task.new(title: "買物", content: "卵,ネギ")
 todo = ToDo.new
 todo.add(task1)
 todo.add(task2)
+todo.info
+todo.delete(id: 1)
+todo.add(task3)
+todo.delete(id: 4)
+todo.delete(id: 3)
 todo.info
