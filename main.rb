@@ -39,8 +39,8 @@ class ToDo
 
   # 詰まっている箇所
   def delete(id:)
-    task = @tasks.find{｜task｜ task.id == id }
-    if task.empty?
+    task = @tasks.find{|task| task.id == id }
+    if task.nil?
       puts "【！】該当idのタスクはありません。"
     else
       @tasks.delete(task)
