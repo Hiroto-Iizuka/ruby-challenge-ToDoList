@@ -1,16 +1,15 @@
-require './task'
-class ToDo < Task
+class ToDo
   def initialize
     @tasks = []
   end
 
   def add(task)
-    puts "【追加】#{task.info}"
     @tasks.push(task)
+    puts "【追加】#{task.info}"
   end
   
   def info
-    if @tasks == []
+    if @tasks.empty?
       puts "【！】タスクはありません。"
     else
       puts "*=*=*=*=*=*=*=*=* task *=*=*=*=*=*=*=*=*"
